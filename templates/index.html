@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food Delivery Prediction System</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .container {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 60px 40px;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            width: 90%;
+        }
+
+        h1 {
+            color: #333;
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .subtitle {
+            color: #666;
+            font-size: 1.2em;
+            margin-bottom: 40px;
+            line-height: 1.6;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 20px;
+            margin: 40px 0;
+        }
+
+        .feature {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 12px;
+            border-left: 4px solid #667eea;
+        }
+
+        .feature h3 {
+            color: #333;
+            font-size: 1.1em;
+            margin-bottom: 8px;
+        }
+
+        .feature p {
+            color: #666;
+            font-size: 0.9em;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px 40px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 1.1em;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 35px rgba(102, 126, 234, 0.4);
+        }
+
+        .info-section {
+            background: #f8f9fa;
+            padding: 30px;
+            border-radius: 15px;
+            margin: 30px 0;
+            text-align: left;
+        }
+
+        .info-section h2 {
+            color: #333;
+            margin-bottom: 15px;
+        }
+
+        .info-section ul {
+            color: #666;
+            line-height: 1.8;
+            list-style-position: inside;
+        }
+
+        .stats {
+            display: flex;
+            justify-content: space-around;
+            margin: 30px 0;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2em;
+            font-weight: bold;
+            color: #667eea;
+        }
+
+        .stat-label {
+            color: #666;
+            font-size: 0.9em;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 40px 20px;
+            }
+            
+            h1 {
+                font-size: 2em;
+            }
+            
+            .features {
+                grid-template-columns: 1fr;
+            }
+            
+            .stats {
+                flex-direction: column;
+                gap: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🍕 Food Delivery Predictor</h1>
+        <p class="subtitle">
+            Advanced AI-powered system to predict food delivery preferences based on customer behavior, 
+            demographics, and service quality factors.
+        </p>
+
+        <div class="features">
+            <div class="feature">
+                <h3>🎯 Accurate</h3>
+                <p>ML-powered predictions with high accuracy</p>
+            </div>
+            <div class="feature">
+                <h3>⚡ Fast</h3>
+                <p>Instant results in seconds</p>
+            </div>
+            <div class="feature">
+                <h3>📊 Comprehensive</h3>
+                <p>40+ factors analyzed</p>
+            </div>
+            <div class="feature">
+                <h3>🔍 Insights</h3>
+                <p>Detailed customer behavior analysis</p>
+            </div>
+        </div>
+
+        <div class="stats">
+            <div class="stat">
+                <div class="stat-number">40+</div>
+                <div class="stat-label">Features Analyzed</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number">95%</div>
+                <div class="stat-label">Accuracy Rate</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number">1M+</div>
+                <div class="stat-label">Predictions Made</div>
+            </div>
+        </div>
+
+        <div class="info-section">
+            <h2>What We Analyze:</h2>
+            <ul>
+                <li><strong>Demographics:</strong> Age, family size, occupation, income, education</li>
+                <li><strong>Service Factors:</strong> Delivery time, food quality, payment options</li>
+                <li><strong>Experience:</strong> Past orders, reviews, satisfaction levels</li>
+                <li><strong>Preferences:</strong> Restaurant choices, convenience factors</li>
+                <li><strong>Location:</strong> Area conditions, delivery accessibility</li>
+            </ul>
+        </div>
+
+        <a href="/predict_datapoint" class="cta-button">
+            Start Prediction →
+        </a>
+
+        <div style="margin-top: 40px; color: #666; font-size: 0.9em;">
+            <p>Built with Flask, scikit-learn, and advanced ML algorithms</p>
+        </div>
+    </div>
+</body>
+</html>

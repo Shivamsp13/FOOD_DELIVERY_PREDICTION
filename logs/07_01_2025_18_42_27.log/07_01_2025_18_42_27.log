@@ -1,0 +1,12 @@
+[ 2025-07-01 18:42:27,850 ] 97 werkzeug - WARNING -  * Debugger is active!
+[ 2025-07-01 18:42:27,858 ] 97 werkzeug - INFO -  * Debugger PIN: 109-984-284
+[ 2025-07-01 18:42:39,591 ] 97 werkzeug - INFO - 192.168.43.7 - - [01/Jul/2025 18:42:39] "GET / HTTP/1.1" 200 -
+[ 2025-07-01 18:42:39,796 ] 97 werkzeug - INFO - 192.168.43.7 - - [01/Jul/2025 18:42:39] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+[ 2025-07-01 18:42:48,360 ] 97 werkzeug - INFO - 192.168.43.7 - - [01/Jul/2025 18:42:48] "GET /predict_datapoint HTTP/1.1" 200 -
+[ 2025-07-01 18:47:08,456 ] 214 root - INFO - DataFrame created successfully
+[ 2025-07-01 18:47:08,456 ] 74 root - INFO - DataFrame created from form data
+[ 2025-07-01 18:47:08,456 ] 18 root - INFO - Loading preprocessor and model
+[ 2025-07-01 18:47:08,826 ] 22 root - INFO - Transforming input features
+[ 2025-07-01 18:47:08,871 ] 25 root - INFO - Making prediction
+[ 2025-07-01 18:47:08,872 ] 83 root - INFO - Prediction completed: Will Not Use Food Delivery
+[ 2025-07-01 18:47:08,872 ] 97 werkzeug - INFO - 192.168.43.7 - - [01/Jul/2025 18:47:08] "POST /predict_datapoint HTTP/1.1" 200 -

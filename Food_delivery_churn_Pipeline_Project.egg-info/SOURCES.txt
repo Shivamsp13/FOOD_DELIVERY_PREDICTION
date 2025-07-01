@@ -1,0 +1,6 @@
+README.md
+setup.py
+Food_delivery_churn_Pipeline_Project.egg-info/PKG-INFO
+Food_delivery_churn_Pipeline_Project.egg-info/SOURCES.txt
+Food_delivery_churn_Pipeline_Project.egg-info/dependency_links.txt
+Food_delivery_churn_Pipeline_Project.egg-info/top_level.txt

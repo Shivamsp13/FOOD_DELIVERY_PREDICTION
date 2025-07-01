@@ -1,0 +1,10 @@
+[ 2025-07-01 16:16:25,209 ] 23 root - INFO - Data Ingestion started
+[ 2025-07-01 16:16:25,209 ] 25 root - INFO - Data Reading using Pandas library from local system
+[ 2025-07-01 16:16:25,214 ] 28 root - INFO - Data Reading completed
+[ 2025-07-01 16:16:25,219 ] 32 root - INFO - Dat spliteted into train and test
+[ 2025-07-01 16:16:25,226 ] 39 root - INFO - Data Ingestion completed
+[ 2025-07-01 16:16:25,232 ] 120 root - INFO - Outliers capped on train data
+[ 2025-07-01 16:16:25,233 ] 124 root - INFO - Outliers capped on test data
+[ 2025-07-01 16:16:25,233 ] 36 root - INFO - Data Transformation Started
+[ 2025-07-01 16:16:25,233 ] 131 root - INFO - Splitting train data
+[ 2025-07-01 16:16:25,234 ] 135 root - INFO - Splitting test data
