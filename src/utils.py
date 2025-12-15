@@ -37,7 +37,6 @@ def evaluate_model(X_train, y_train, X_test, y_test, models, params):
             model.set_params(**GS.best_params_)
             model.fit(X_train, y_train)
 
-            # make prediction
             y_pred = model.predict(X_test)
             test_model_acuracy = accuracy_score(y_test, y_pred)
 
