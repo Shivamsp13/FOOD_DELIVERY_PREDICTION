@@ -18,7 +18,6 @@ def predict_datapoint():
         return render_template('home.html')
     else:
         try:
-            # Get form data
             data = CustomClass(
                 age=int(request.form.get('age')),
                 family_size=int(request.form.get('family_size')),
@@ -69,15 +68,12 @@ def predict_datapoint():
                 reviews=request.form.get('reviews', '')
             )
             
-            # Convert to DataFrame
             pred_df = data.get_data_DataFrame()
             logging.info("DataFrame created from form data")
             
-            # Make prediction
             predict_pipeline = PredictionPipeline()
             results = predict_pipeline.predict(pred_df)
             
-            # Interpret results
             prediction_text = "Will Use Food Delivery" if results[0] == 1 else "Will Not Use Food Delivery"
             
             logging.info(f"Prediction completed: {prediction_text}")
@@ -93,13 +89,11 @@ def api_predict():
     try:
         json_data = request.get_json()
         
-        # Validate required fields
         required_fields = ['age', 'family_size', 'gender', 'marital_status', 'occupation']
         for field in required_fields:
             if field not in json_data:
                 return jsonify({'error': f'Missing required field: {field}'}), 400
         
-        # Create CustomClass instance with default values for optional fields
         data = CustomClass(
             age=json_data.get('age'),
             family_size=json_data.get('family_size'),
@@ -150,12 +144,10 @@ def api_predict():
             reviews=json_data.get('reviews', '')
         )
         
-        # Convert to DataFrame and predict
         pred_df = data.get_data_DataFrame()
         predict_pipeline = PredictionPipeline()
         results = predict_pipeline.predict(pred_df)
         
-        # Return JSON response
         prediction_result = {
             'prediction': int(results[0]),
             'prediction_text': "Will Use Food Delivery" if results[0] == 1 else "Will Not Use Food Delivery",
