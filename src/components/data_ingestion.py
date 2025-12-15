@@ -24,7 +24,7 @@ class DataIngestion:
         try:
             logging.info("Data Reading using Pandas library from local system")
             data = pd.read_csv(os.path.join("notebook/data", "onlinedeliverydata.csv"))
-            # print("Columns in CSV:", data.columns.tolist())
+
             logging.info("Data Reading completed")
 
             os.makedirs(os.path.dirname(self.ingestion_config.raw_data_path), exist_ok=True)
@@ -56,5 +56,3 @@ if __name__ =="__main__":
 
     modeltrainer = ModelTrainer()
     print(modeltrainer.initiate_model_trainer(train_arr, test_arr))
-
-# src/components/data_ingestion.py
