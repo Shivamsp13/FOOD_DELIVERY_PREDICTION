@@ -18,7 +18,6 @@ class DataTransformartionConfigs:
     preprocess_obj_file_patrh = os.path.join("artifacts/data_transformation", "preprcessor.pkl")
 
 
-# Sentiment extractor for review column
 class SentimentExtractor(BaseEstimator, TransformerMixin):
     def fit(self, X, y=None):
         return self
@@ -49,60 +48,58 @@ class DataTransformation:
                 'Good Quantity']
 
             ordinal_categories = [
-                # 1–3: Single category per feature
-                ['Student', 'House wife', 'Self Employeed', 'Employee'],  # Occupation
-                ['No Income', 'Below Rs.10000', '10001 to 25000', '25001 to 50000', 'More than 50000'],  # Monthly Income
-                ['Uneducated', 'School', 'Graduate', 'Post Graduate', 'Ph.D'],  # Educational Qualifications
+                ['Student', 'House wife', 'Self Employeed', 'Employee'],
+                ['No Income', 'Below Rs.10000', '10001 to 25000', '25001 to 50000', 'More than 50000'],
+                ['Uneducated', 'School', 'Graduate', 'Post Graduate', 'Ph.D'],
 
-                # 4–24: 21 Likert-scale features
-                ['Strongly disagree', 'Disagree', 'Neutral', 'Agree', 'Strongly agree'],  # Ease and convenient
-                ['Strongly disagree', 'Disagree', 'Neutral', 'Agree', 'Strongly agree'],  # Time saving
-                ['Strongly disagree', 'Disagree', 'Neutral', 'Agree', 'Strongly agree'],  # More restaurant choices
-                ['Strongly disagree', 'Disagree', 'Neutral', 'Agree', 'Strongly agree'],  # Easy Payment option
-                ['Strongly disagree', 'Disagree', 'Neutral', 'Agree', 'Strongly agree'],  # More Offers and Discount
-                ['Strongly disagree', 'Disagree', 'Neutral', 'Agree', 'Strongly agree'],  # Good Food quality
-                ['Strongly disagree', 'Disagree', 'Neutral', 'Agree', 'Strongly agree'],  # Good Tracking system
-                ['Strongly disagree', 'Disagree', 'Neutral', 'Agree', 'Strongly agree'],  # Self Cooking
-                ['Strongly disagree', 'Disagree', 'Neutral', 'Agree', 'Strongly agree'],  # Health Concern
-                ['Strongly disagree', 'Disagree', 'Neutral', 'Agree', 'Strongly agree'],  # Late Delivery
-                ['Strongly disagree', 'Disagree', 'Neutral', 'Agree', 'Strongly agree'],  # Poor Hygiene
-                ['Strongly disagree', 'Disagree', 'Neutral', 'Agree', 'Strongly agree'],  # Bad past experience
-                ['Strongly disagree', 'Disagree', 'Neutral', 'Agree', 'Strongly agree'],  # Unavailability
-                ['Strongly disagree', 'Disagree', 'Neutral', 'Agree', 'Strongly agree'],  # Unaffordable
-                ['Strongly disagree', 'Disagree', 'Neutral', 'Agree', 'Strongly agree'],  # Long delivery time
-                ['Strongly disagree', 'Disagree', 'Neutral', 'Agree', 'Strongly agree'],  # Delay of delivery person getting assigned
-                ['Strongly disagree', 'Disagree', 'Neutral', 'Agree', 'Strongly agree'],  # Delay of delivery person picking up food
-                ['Strongly disagree', 'Disagree', 'Neutral', 'Agree', 'Strongly agree'],  # Wrong order delivered
-                ['Strongly disagree', 'Disagree', 'Neutral', 'Agree', 'Strongly agree'],  # Missing item
-                ['Strongly disagree', 'Disagree', 'Neutral', 'Agree', 'Strongly agree'],  # Order placed by mistake
+                ['Strongly disagree', 'Disagree', 'Neutral', 'Agree', 'Strongly agree'], 
+                ['Strongly disagree', 'Disagree', 'Neutral', 'Agree', 'Strongly agree'], 
+                ['Strongly disagree', 'Disagree', 'Neutral', 'Agree', 'Strongly agree'], 
+                ['Strongly disagree', 'Disagree', 'Neutral', 'Agree', 'Strongly agree'], 
+                ['Strongly disagree', 'Disagree', 'Neutral', 'Agree', 'Strongly agree'],  
+                ['Strongly disagree', 'Disagree', 'Neutral', 'Agree', 'Strongly agree'],  
+                ['Strongly disagree', 'Disagree', 'Neutral', 'Agree', 'Strongly agree'],  
+                ['Strongly disagree', 'Disagree', 'Neutral', 'Agree', 'Strongly agree'], 
+                ['Strongly disagree', 'Disagree', 'Neutral', 'Agree', 'Strongly agree'],  
+                ['Strongly disagree', 'Disagree', 'Neutral', 'Agree', 'Strongly agree'], 
+                ['Strongly disagree', 'Disagree', 'Neutral', 'Agree', 'Strongly agree'],
+                ['Strongly disagree', 'Disagree', 'Neutral', 'Agree', 'Strongly agree'], 
+                ['Strongly disagree', 'Disagree', 'Neutral', 'Agree', 'Strongly agree'], 
+                ['Strongly disagree', 'Disagree', 'Neutral', 'Agree', 'Strongly agree'], 
+                ['Strongly disagree', 'Disagree', 'Neutral', 'Agree', 'Strongly agree'],  
+                ['Strongly disagree', 'Disagree', 'Neutral', 'Agree', 'Strongly agree'],  
+                ['Strongly disagree', 'Disagree', 'Neutral', 'Agree', 'Strongly agree'],  
+                ['Strongly disagree', 'Disagree', 'Neutral', 'Agree', 'Strongly agree'], 
+                ['Strongly disagree', 'Disagree', 'Neutral', 'Agree', 'Strongly agree'],  
+                ['Strongly disagree', 'Disagree', 'Neutral', 'Agree', 'Strongly agree'],  
 
-                # 25: Influence of time
+
                 ['No', 'Maybe', 'Yes'],
 
-                # 26: Maximum wait time
+
                 ['15 minutes', '30 minutes', '45 minutes', '60 minutes', 'More than 60 minutes'],
 
-                # 27: Residence in busy location — THIS was missing before
+
                 ['Strongly disagree', 'Disagree', 'Neutral', 'Agree', 'Strongly Agree'],
 
-                # 28–31: Next 4 Likert-scale fields
-                ['Strongly disagree', 'Disagree', 'Neutral', 'Agree', 'Strongly Agree'],  # Google Maps Accuracy
-                ['Strongly disagree', 'Disagree', 'Neutral', 'Agree', 'Strongly Agree'],  # Good Road Condition
-                ['Strongly disagree', 'Disagree', 'Neutral', 'Agree', 'Strongly Agree'],  # Low quantity low time
-                ['Strongly disagree', 'Disagree', 'Neutral', 'Agree', 'Strongly Agree'],  # Delivery person ability
 
-                # 32: Influence of rating
+                ['Strongly disagree', 'Disagree', 'Neutral', 'Agree', 'Strongly Agree'],
+                ['Strongly disagree', 'Disagree', 'Neutral', 'Agree', 'Strongly Agree'],
+                ['Strongly disagree', 'Disagree', 'Neutral', 'Agree', 'Strongly Agree'], 
+                ['Strongly disagree', 'Disagree', 'Neutral', 'Agree', 'Strongly Agree'],  
+
+
                 ['No', 'Maybe', 'Yes'],
 
-                # 33–40: 8 Importance-based features
-                ['Unimportant', 'Slightly Important', 'Moderately Important', 'Important', 'Very Important'],  # Less Delivery time
-                ['Unimportant', 'Slightly Important', 'Moderately Important', 'Important', 'Very Important'],  # High Quality of package
-                ['Unimportant', 'Slightly Important', 'Moderately Important', 'Important', 'Very Important'],  # Number of calls
-                ['Unimportant', 'Slightly Important', 'Moderately Important', 'Important', 'Very Important'],  # Politeness
-                ['Unimportant', 'Slightly Important', 'Moderately Important', 'Important', 'Very Important'],  # Freshness 
-                ['Unimportant', 'Slightly Important', 'Moderately Important', 'Important', 'Very Important'],  # Temperature
-                ['Unimportant', 'Slightly Important', 'Moderately Important', 'Important', 'Very Important'],  # Good Taste 
-                ['Unimportant', 'Slightly Important', 'Moderately Important', 'Important', 'Very Important']  # Good Quantity
+
+                ['Unimportant', 'Slightly Important', 'Moderately Important', 'Important', 'Very Important'], 
+                ['Unimportant', 'Slightly Important', 'Moderately Important', 'Important', 'Very Important'], 
+                ['Unimportant', 'Slightly Important', 'Moderately Important', 'Important', 'Very Important'], 
+                ['Unimportant', 'Slightly Important', 'Moderately Important', 'Important', 'Very Important'], 
+                ['Unimportant', 'Slightly Important', 'Moderately Important', 'Important', 'Very Important'], 
+                ['Unimportant', 'Slightly Important', 'Moderately Important', 'Important', 'Very Important'], 
+                ['Unimportant', 'Slightly Important', 'Moderately Important', 'Important', 'Very Important'], 
+                ['Unimportant', 'Slightly Important', 'Moderately Important', 'Important', 'Very Important'] 
             ]
 
 
@@ -158,7 +155,7 @@ class DataTransformation:
             train_data = pd.read_csv(train_path)
             test_data = pd.read_csv(test_path)
 
-            # Example columns (update these to match actual numeric features for outlier handling)
+
             numerical_features = ['Age', 'Family size']
 
             for col in numerical_features:
