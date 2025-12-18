@@ -19,11 +19,15 @@ class PredictionPipeline:
             processor = load_object(preprocessor_path)
             model = load_object(model_path)
             
-            logging.info("Transforming input features")
-            scaled = processor.transform(features)
+            selector_path = os.path.join("artifacts/data_transformation", "feature_selector.pkl")
             
-            logging.info("Making prediction")
-            pred = model.predict(scaled)
+            selector = load_object(selector_path)
+            
+            scaled = processor.transform(features)
+            scaled_selected = selector.transform(scaled)
+            
+            pred = model.predict(scaled_selected)
+
             
             return pred
             
