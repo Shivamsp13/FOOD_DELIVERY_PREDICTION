@@ -70,6 +70,7 @@ POST /api/predict
   "gender": "Male",
   "marital_status": "Single",
   "occupation": "Student"
+  ...
 }
 ```
 
