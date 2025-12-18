@@ -8,6 +8,8 @@ from sklearn.compose import ColumnTransformer
 from sklearn.impute import SimpleImputer
 from sklearn.preprocessing import StandardScaler, OneHotEncoder, OrdinalEncoder
 from sklearn.base import BaseEstimator, TransformerMixin
+from sklearn.feature_selection import SelectKBest, f_classif
+
 
 from src.logger import logging
 from src.exception import CustomException
@@ -16,6 +18,8 @@ from src.utils import save_object
 @dataclass
 class DataTransformartionConfigs:
     preprocess_obj_file_patrh = os.path.join("artifacts/data_transformation", "preprcessor.pkl")
+    feature_selector_path = os.path.join("artifacts/data_transformation", "feature_selector.pkl")
+
 
 
 class SentimentExtractor(BaseEstimator, TransformerMixin):
@@ -130,7 +134,9 @@ class DataTransformation:
                 ("sentiment", SentimentExtractor(), ["Reviews"])
             ])
 
-            return preprocessor
+            selector = SelectKBest(score_func=f_classif, k=20)
+            return preprocessor, selector
+
 
         except Exception as e:
             raise CustomException(e, sys)
@@ -166,7 +172,8 @@ class DataTransformation:
                 self.remove_outliers_IQR(col=col, df=test_data)
             logging.info("Outliers capped on test data")
 
-            preprocess_obj = self.get_data_transformation_obj()
+            preprocess_obj, selector = self.get_data_transformation_obj()
+
 
             target_column = "Output"
             drop_columns = [target_column]
@@ -179,16 +186,30 @@ class DataTransformation:
             input_feature_test_data = test_data.drop(drop_columns, axis=1)
             target_feature_test_data = test_data[target_column]
 
-            input_train_arr = preprocess_obj.fit_transform(input_feature_train_data)
-            input_test_arr = preprocess_obj.transform(input_feature_test_data)
+            X_train_transformed = preprocess_obj.fit_transform(input_feature_train_data)
+            X_test_transformed = preprocess_obj.transform(input_feature_test_data)
+            
+            X_train_selected = selector.fit_transform(X_train_transformed, target_feature_train_data)
+            X_test_selected = selector.transform(X_test_transformed)
 
-            train_array = np.c_[input_train_arr, np.array(target_feature_train_data)]
-            test_array = np.c_[input_test_arr, np.array(target_feature_test_data)]
+            
+            train_array = np.c_[X_train_selected, target_feature_train_data]
+            test_array = np.c_[X_test_selected, target_feature_test_data]
 
-            save_object(file_path=self.data_transformation_config.preprocess_obj_file_patrh,
-                        obj=preprocess_obj)
 
-            return train_array, test_array, self.data_transformation_config.preprocess_obj_file_patrh
+            save_object(
+            file_path=self.data_transformation_config.feature_selector_path,
+            obj=selector
+        )
+
+
+            return (
+            train_array,
+            test_array,
+            self.data_transformation_config.preprocess_obj_file_patrh,
+            self.data_transformation_config.feature_selector_path
+        )
+
 
         except Exception as e:
             raise CustomException(e, sys)
